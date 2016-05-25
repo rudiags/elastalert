@@ -133,6 +133,7 @@ class ElastAlerter():
                                          aws_region=es_conn_conf['aws_region'],
                                          boto_profile=es_conn_conf['boto_profile'])
 
+        # TODO add client certificate support
         return Elasticsearch(host=es_conn_conf['es_host'],
                              port=es_conn_conf['es_port'],
                              url_prefix=es_conn_conf['es_url_prefix'],
