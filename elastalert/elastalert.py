@@ -141,7 +141,10 @@ class ElastAlerter():
                              connection_class=RequestsHttpConnection,
                              http_auth=es_conn_conf['http_auth'],
                              timeout=es_conn_conf['es_conn_timeout'],
-                             send_get_body_as=es_conn_conf['send_get_body_as'])
+                             send_get_body_as=es_conn_conf['send_get_body_as'],
+                             client_cert='/tmp/client_cert.pem',
+                             client_key='/tmp/client_key.pem',
+                             )
 
     @staticmethod
     def build_es_conn_config(conf):

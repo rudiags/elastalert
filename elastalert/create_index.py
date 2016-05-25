@@ -77,7 +77,10 @@ def main():
         connection_class=RequestsHttpConnection,
         http_auth=http_auth,
         url_prefix=url_prefix,
-        send_get_body_as=send_get_body_as)
+        send_get_body_as=send_get_body_as,
+        client_cert='/tmp/client_cert.pem',
+        client_key='/tmp/client_key.pem',
+        )
 
     silence_mapping = {'silence': {'properties': {'rule_name': {'index': 'not_analyzed', 'type': 'string'},
                                                   'until': {'type': 'date', 'format': 'dateOptionalTime'},
