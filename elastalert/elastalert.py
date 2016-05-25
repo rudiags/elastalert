@@ -142,8 +142,8 @@ class ElastAlerter():
                              http_auth=es_conn_conf['http_auth'],
                              timeout=es_conn_conf['es_conn_timeout'],
                              send_get_body_as=es_conn_conf['send_get_body_as'],
-                             client_cert='/tmp/client_cert.pem',
-                             client_key='/tmp/client_key.pem',
+                             client_cert='/opt/secrets/client_cert.pem',
+                             client_key='/opt/secrets/client_key.pem',
                              )
 
     @staticmethod

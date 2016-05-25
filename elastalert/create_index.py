@@ -78,8 +78,9 @@ def main():
         http_auth=http_auth,
         url_prefix=url_prefix,
         send_get_body_as=send_get_body_as,
-        client_cert='/tmp/client_cert.pem',
-        client_key='/tmp/client_key.pem',
+        ca_certs='/opt/secrets/ea.ca',
+        client_cert='/opt/secrets/ea.cert',
+        client_key='/opt/secrets/ea.key',
         )
 
     silence_mapping = {'silence': {'properties': {'rule_name': {'index': 'not_analyzed', 'type': 'string'},
