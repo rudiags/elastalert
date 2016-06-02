@@ -28,5 +28,5 @@ startsecs=15
 stopsignal=INT
 stopasgroup=true
 killasgroup=true
-stderr_logfile=/var/log/elastalert_stderr.log
-stderr_logfile_maxbytes=5MB
+#stderr_logfile=/var/log/elastalert_stderr.log
+#stderr_logfile_maxbytes=5MB
