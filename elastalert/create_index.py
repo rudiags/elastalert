@@ -79,6 +79,7 @@ def main():
         url_prefix=url_prefix,
         send_get_body_as=send_get_body_as,
         ca_certs='/opt/secrets/ea.ca',
+        verify_certs=True,
         client_cert='/opt/secrets/ea.cert',
         client_key='/opt/secrets/ea.key',
         )
