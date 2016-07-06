@@ -82,6 +82,7 @@ def main():
         # verify_certs=True,
         client_cert='/opt/secrets/ea.crt',
         client_key='/opt/secrets/ea.key',
+        ssl_version='TLSv1',
         )
 
     silence_mapping = {'silence': {'properties': {'rule_name': {'index': 'not_analyzed', 'type': 'string'},
