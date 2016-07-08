@@ -143,11 +143,11 @@ class ElastAlerter():
                              timeout=es_conn_conf['es_conn_timeout'],
                             #  send_get_body_as=es_conn_conf['send_get_body_as'],
                              send_get_body_as='POST',
-                            #  ca_certs='/opt/secrets/ea.ca',
-                            #  verify_certs=True,
+                             ca_certs='/opt/secrets/ea.ca',
+                             verify_certs=True,
                              client_cert='/opt/secrets/ea.crt',
                              client_key='/opt/secrets/ea.key',
-                             ssl_version='TLSv1',
+                            #  ssl_version='TLSv1',
                              )
 
     @staticmethod
