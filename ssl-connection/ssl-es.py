@@ -14,6 +14,7 @@ def new_elasticsearch():
                               connection_class=RequestsHttpConnection,
                               timeout=10,
                               ca_certs='/opt/secrets/ea.ca',
+                              verify_certs=True,
                               client_cert='/opt/secrets/ea.cert',
                               client_key='/opt/secrets/ea.key',
                               )
