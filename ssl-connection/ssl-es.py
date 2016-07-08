@@ -15,7 +15,7 @@ def new_elasticsearch():
                               timeout=10,
                               ca_certs='/opt/secrets/ea.ca',
                               verify_certs=True,
-                              client_cert='/opt/secrets/ea.cert',
+                              client_cert='/opt/secrets/ea.crt',
                               client_key='/opt/secrets/ea.key',
                               )
 
