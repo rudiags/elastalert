@@ -23,7 +23,7 @@ setup(
     package_data={'elastalert': ['schema.yaml']},
     install_requires=[
         'argparse',
-        'elasticsearch<=1.7.0',
+        'elasticsearch',
         'jira==0.32',  # jira.exceptions is missing from later versions
         'jsonschema',
         'mock',
