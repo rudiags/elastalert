@@ -228,7 +228,7 @@ class ElastAlerter():
                                                                                         'lte': endtime}}})
         query = {'query': {'filtered': es_filters}}
         if sort:
-            query['sort'] = [{timestamp_field: {'order': 'desc' if desc else 'asc'}}]
+            query['sort'] = [{timestamp_field: {'unmapped_type':'long', 'order': 'desc' if desc else 'asc'}}]
         return query
 
     def get_terms_query(self, query, size, field):
@@ -246,7 +246,7 @@ class ElastAlerter():
         :param index: The index of which to find the earliest event.
         :return: Timestamp of the earliest event.
         """
-        query = {'sort': {timestamp_field: {'order': 'asc'}}}
+        query = {'sort': {timestamp_field: {'unmapped_type':'long', 'order': 'asc'}}}
         try:
             res = self.current_es.search(index=index, size=1, body=query, _source_include=[timestamp_field], ignore_unavailable=True)
         except ElasticsearchException as e:
@@ -458,7 +458,7 @@ class ElastAlerter():
         :return: A timestamp or None.
         """
         query = {'filter': {'term': {'rule_name': '%s' % (rule['name'])}},
-                 'sort': {'@timestamp': {'order': 'desc'}}}
+                 'sort': {'@timestamp': {'unmapped_type':'long', 'order': 'desc'}}}
         try:
             if self.writeback_es:
                 res = self.writeback_es.search(index=self.writeback_index, doc_type='elastalert_status',
@@ -1044,7 +1044,7 @@ class ElastAlerter():
         query = {'query': {'query_string': {'query': '!_exists_:aggregate_id AND alert_sent:false'}},
                  'filter': {'range': {'alert_time': {'from': dt_to_ts(ts_now() - time_limit),
                                                      'to': dt_to_ts(ts_now())}}},
-                 'sort': {'alert_time': {'order': 'asc'}}}
+                 'sort': {'alert_time': {'unmapped_type':'long', 'order': 'asc'}}}
         if self.writeback_es:
             try:
                 res = self.writeback_es.search(index=self.writeback_index,
@@ -1135,7 +1135,7 @@ class ElastAlerter():
                                               {'range': {'alert_time': {'gt': ts_now()}}},
                                               {'not': {'exists': {'field': 'aggregate_id'}}},
                                               {'term': {'alert_sent': 'false'}}]}},
-                 'sort': {'alert_time': {'order': 'desc'}}}
+                 'sort': {'alert_time': {'unmapped_type':'long', 'order': 'desc'}}}
         if not self.writeback_es:
             self.writeback_es = self.new_elasticsearch(self.es_conn_config)
         try:
@@ -1250,7 +1250,7 @@ class ElastAlerter():
             return False
 
         query = {'filter': {'term': {'rule_name': rule_name}},
-                 'sort': {'until': {'order': 'desc'}}}
+                 'sort': {'until': {'unmapped_type':'long', 'order': 'desc'}}}
 
         if self.writeback_es:
             try:
